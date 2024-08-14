@@ -3,15 +3,15 @@ import 'package:slivers_demo_flutter/pages/fitness_tracker/models/split.dart';
 
 class ActivitySplitRow extends StatelessWidget {
   const ActivitySplitRow({
-    Key key,
-    @required this.split,
-    @required this.maxPace,
-    @required this.minPace,
+    Key? key,
+    required this.split,
+    required this.maxPace,
+    required this.minPace,
     this.kmWidth = 40,
     this.paceWidth = 50,
     this.elevWidth = 40,
   }) : super(key: key);
-  final Split split;
+  final Splits split;
   final int maxPace;
   final int minPace;
 
@@ -25,7 +25,7 @@ class ActivitySplitRow extends StatelessWidget {
     final formatted =
         '${split.pace.inMinutes}:${seconds.toString().padLeft(2, '0')}';
     final style =
-        Theme.of(context).textTheme.caption.copyWith(color: Colors.black87);
+        Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black87);
     return Row(
       children: <Widget>[
         SizedBox(
@@ -57,7 +57,7 @@ class ActivitySplitRow extends StatelessWidget {
 }
 
 class ActivitySplitBar extends StatelessWidget {
-  const ActivitySplitBar({Key key, this.max, this.min, this.current})
+  const ActivitySplitBar({Key? key, required this.max, required this.min, required this.current})
       : super(key: key);
   final double max;
   final double min;

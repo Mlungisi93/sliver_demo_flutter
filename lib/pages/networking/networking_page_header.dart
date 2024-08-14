@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class NetworkingPageHeader implements SliverPersistentHeaderDelegate {
+class NetworkingPageHeader extends SliverPersistentHeaderDelegate {
   NetworkingPageHeader({
-    this.minExtent,
-    @required this.maxExtent,
+    required this.minExtent,
+    required this.maxExtent,
   });
   final double minExtent;
   final double maxExtent;
@@ -61,5 +61,6 @@ class NetworkingPageHeader implements SliverPersistentHeaderDelegate {
   }
 
   @override
-  FloatingHeaderSnapConfiguration get snapConfiguration => null;
+  FloatingHeaderSnapConfiguration get snapConfiguration =>
+      FloatingHeaderSnapConfiguration();
 }

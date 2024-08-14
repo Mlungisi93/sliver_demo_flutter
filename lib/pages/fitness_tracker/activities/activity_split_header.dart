@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ActivitySplitHeader extends StatelessWidget {
   const ActivitySplitHeader(
-      {Key key, this.kmWidth = 40, this.paceWidth = 50, this.elevWidth = 40})
+      {Key? key, this.kmWidth = 40, this.paceWidth = 50, this.elevWidth = 40})
       : super(key: key);
   final double kmWidth;
   final double paceWidth;
@@ -14,11 +14,11 @@ class ActivitySplitHeader extends StatelessWidget {
       children: <Widget>[
         SizedBox(
           width: kmWidth,
-          child: Text('KM', style: Theme.of(context).textTheme.caption),
+          child: Text('KM', style: Theme.of(context).textTheme.titleMedium),
         ),
         SizedBox(
           width: paceWidth,
-          child: Text('PACE', style: Theme.of(context).textTheme.caption),
+          child: Text('PACE', style: Theme.of(context).textTheme.titleMedium),
         ),
         Expanded(
             child: Row(
@@ -27,7 +27,7 @@ class ActivitySplitHeader extends StatelessWidget {
         SizedBox(
           width: elevWidth,
           child: Text('ELEV',
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.right),
         ),
       ],

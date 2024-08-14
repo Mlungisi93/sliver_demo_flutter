@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:slivers_demo_flutter/page.dart';
 
+
+
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({Key key, this.page, this.onSelectPage})
+  const BottomNavigation({Key? key, required this.page, required this.onSelectPage})
       : super(key: key);
-  final Page page;
-  final ValueChanged<Page> onSelectPage;
+  final Pages page;
+  final ValueChanged<Pages> onSelectPage;
 
-  Color _color(Page page) => this.page == page ? Colors.indigo : Colors.grey;
+  Color _color(Pages page) => this.page == page ? Colors.indigo : Colors.grey;
 
-  static const Map<Page, IconData> icons = {
-    Page.basic: Icons.view_headline,
-    Page.fetch: Icons.cloud_download,
-    Page.custom: Icons.directions_run,
+  static const Map<Pages, IconData> icons = {
+    Pages.basic: Icons.view_headline,
+    Pages.fetch: Icons.cloud_download,
+    Pages.custom: Icons.directions_run,
 //    Page.nested: Icons.table_chart,
   };
-  static const Map<Page, String> names = {
-    Page.basic: 'basic',
-    Page.fetch: 'networking',
-    Page.custom: 'custom',
-//    Page.nested: 'nested',
+  static const Map<Pages, String> names = {
+    Pages.basic: 'basic',
+    Pages.fetch: 'networking',
+    Pages.custom: 'custom',
+    Pages.nested: 'nested',
   };
 
-  BottomNavigationBarItem _buildItem(Page page) {
+  BottomNavigationBarItem _buildItem(Pages page) {
     return BottomNavigationBarItem(
       icon: Icon(
         icons[page],
         color: _color(page),
       ),
-      title: Text(
-        names[page],
+      /*title: Text(
+        names[page]!,
         style: TextStyle(
           color: _color(page),
         ),
       ),
+
+       */
+      label: names[page]!,
     );
   }
 
@@ -41,8 +46,8 @@ class BottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      items: Page.values.map(_buildItem).toList(),
-      onTap: (index) => onSelectPage(Page.values[index]),
+      items: Pages.values.map(_buildItem).toList(),
+      onTap: (index) => onSelectPage(Pages.values[index] as Pages),
     );
   }
 }

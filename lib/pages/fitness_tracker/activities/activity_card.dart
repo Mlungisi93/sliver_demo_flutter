@@ -6,7 +6,7 @@ import 'package:slivers_demo_flutter/pages/fitness_tracker/models/activity.dart'
 import 'package:slivers_demo_flutter/pages/fitness_tracker/models/user.dart';
 
 class ActivityCard extends StatelessWidget {
-  const ActivityCard({Key key, this.user, this.activity}) : super(key: key);
+  const ActivityCard({Key? key, required this.user, required this.activity}) : super(key: key);
   final User user;
   final Activity activity;
   @override
@@ -37,7 +37,7 @@ class ActivityCard extends StatelessWidget {
         SizedBox(height: 16.0),
         ActivityCardBody(activity: activity),
         SizedBox(height: 16.0),
-        if (activity.splits != null) ActivitySplits(activity.splits),
+        if (activity.splits != null) ActivitySplits(activity.splits!),
       ],
     );
   }

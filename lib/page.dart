@@ -1,6 +1,7 @@
-enum Page {
+
+enum Pages {
   basic,
   fetch,
   custom,
-//  nested,
+nested,
 }

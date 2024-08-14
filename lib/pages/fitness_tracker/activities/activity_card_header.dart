@@ -4,7 +4,8 @@ import 'package:slivers_demo_flutter/pages/fitness_tracker/models/activity.dart'
 import 'package:slivers_demo_flutter/pages/fitness_tracker/models/user.dart';
 
 class ActivityCardHeader extends StatelessWidget {
-  const ActivityCardHeader({Key key, this.user, this.activity})
+  const ActivityCardHeader(
+      {Key? key, required this.user, required this.activity})
       : super(key: key);
   final User user;
   final Activity activity;
@@ -13,7 +14,11 @@ class ActivityCardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Avatar(radius: 15),
+        Avatar(
+          radius: 15,
+          key: null,
+          photoUrl: '',
+        ),
         SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,11 +26,11 @@ class ActivityCardHeader extends StatelessWidget {
             if (user.displayName != null)
               Text(
                 user.displayName,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             Text(
               activity.dateTime,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ],
         )

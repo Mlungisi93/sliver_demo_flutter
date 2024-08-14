@@ -7,7 +7,7 @@ import 'package:slivers_demo_flutter/pages/fitness_tracker/models/split.dart';
 
 class ActivitySplits extends StatelessWidget {
   const ActivitySplits(this.splits);
-  final List<Split> splits;
+  final List<Splits> splits;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ActivitySplits extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         SizedBox(height: 8.0),
-        Text('Splits', style: Theme.of(context).textTheme.title),
+        Text('Splits', style: Theme.of(context).textTheme.headlineMedium),
         SizedBox(height: 8.0),
         ActivitySplitHeader(),
         SizedBox(height: 4.0),

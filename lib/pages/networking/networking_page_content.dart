@@ -7,7 +7,7 @@ class NetworkingPageContent extends StatefulWidget {
 }
 
 class _NetworkingPageContentState extends State<NetworkingPageContent> {
-  Future<String> _loader;
+  late Future<String> _loader;
   bool _shouldFail = false;
 
   // mock function to load some data or fail after some delay
@@ -53,7 +53,7 @@ class _NetworkingPageContentState extends State<NetworkingPageContent> {
         if (snapshot.hasData) {
           return SliverToBoxAdapter(
             child: TextAndButton(
-              content: snapshot.data,
+              content: snapshot.data!,
               buttonText: 'Reload',
               onPressed: _retry,
             ),
@@ -68,7 +68,11 @@ class _NetworkingPageContentState extends State<NetworkingPageContent> {
 }
 
 class TextAndButton extends StatelessWidget {
-  const TextAndButton({Key key, this.content, this.buttonText, this.onPressed})
+  const TextAndButton(
+      {Key? key,
+      required this.content,
+      required this.buttonText,
+      required this.onPressed})
       : super(key: key);
   final String content;
   final String buttonText;
@@ -80,18 +84,21 @@ class TextAndButton extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: [
           Text(
             content,
-            style: Theme.of(context).textTheme.headline,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-          RaisedButton(
-            color: Theme.of(context).primaryColor,
+          ElevatedButton(
+            //color: Theme.of(context).primaryColor,
             child: Text(buttonText,
                 style: Theme.of(context)
                     .textTheme
-                    .headline
-                    .copyWith(color: Colors.white)),
+                    .headlineMedium
+                    ?.copyWith(color: Colors.white)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
             onPressed: onPressed,
           ),
         ],
